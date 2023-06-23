@@ -1,0 +1,11 @@
+*.wxs
+*.spec
+bin
+build
+dist
+obj
+__pycache__
+.vscode
+*.wixproj
+*.wxs
+*.$xml
