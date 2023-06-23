@@ -10,14 +10,14 @@ import xml.etree.ElementTree as et
 DEFAULT_SOURCE = os.path.abspath(os.sep)
 DEFAULT_TARGET = os.path.abspath(os.sep)
 DEFAULT_PROJECT_NAME = "untitled_app"
-LAST_LOC_FILE = "last_loc.xml"
+LAST_LOC_FILE = "src/last_loc.xml"
 
 
 def main():
 
     project_name_win = tk.Tk()
     project_name_win.title("Enter the project name")
-    project_name_win.iconbitmap("./makewxs.ico")
+    project_name_win.iconbitmap("src/makewxs.ico")
 
     last_source = DEFAULT_SOURCE
     last_target = DEFAULT_TARGET
