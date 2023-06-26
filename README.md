@@ -23,7 +23,7 @@ MakeWxs will now help you to create directory and component structure for a simp
 
 As indicated in the [About](#about-makewxs) section, we will use Wix v4 together with *MSBuild* (here version 17.6.3).
 
-1) Download the zip archive with a simple directory hierarchy, that we want to use to build the installer. Extract the *root* directory into some location of your choice. 
+1) Download the [zip archive](https://www.dropbox.com/s/9jbapo9x34ij309/makewxs_tutorial.zip?dl=1) with a simple directory hierarchy, that we want to use to build the installer. Extract the *root* directory into some location of your choice. 
 2) Run the **MakeWxs.exe** in the **MakeWxs installation folder**. 
 3) Specify the **target directory**, where .wxs containing the directory structure and program components should be created. Here, for example, it is the directory containing the **root** folder.
 4) Specify the **source directory**, containing all the files to be inclued in the msi package. In this case, it is the **root** folder itself.
