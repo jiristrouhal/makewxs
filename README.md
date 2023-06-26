@@ -32,7 +32,7 @@ As indicated in the [About](#about-makewxs) section, we will use Wix v4 together
 5) Specify the project (msi package) **name** (*MWTutorial* for example) and click **Ok**. Five files should appear next to the root folder. 
 
 <p style="margin-left: 50px;">  
-    <img src="produced_files.png" alt= “Produced_files” width="200" height="150" >
+    <img src="help_files/produced_files.png" alt= “Produced_files” width="200" height="150" >
 </p>
 
 6) Specify the attributes of the Package element in **MWTutorial.wxs**. 
