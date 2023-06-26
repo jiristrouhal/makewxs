@@ -9,4 +9,3 @@ __pycache__
 *.wixproj
 *.wxs
 *.xml
-src/*.xml
