@@ -10,7 +10,6 @@ MakeWxs is designed primarily to be used with **Wix v4**.
 
 **IMPORTANT**: This project **is not** related to the WiX Toolset development in any way and does not use any of its components.
 
-&nbsp;
 # How to get and install MakeWxs
 
 You can download MakeWxs installer from [here](https://jiristrouhal.wordpress.com/makewxs/download-makewxs). Run the MakeWxs.msi and do the following:
@@ -18,7 +17,6 @@ You can download MakeWxs installer from [here](https://jiristrouhal.wordpress.co
 - Choose the destination folder.
 - Proceed with installation. 
 
-&nbsp;
 # Quick tutorial
 
 MakeWxs will now help you to create directory and component structure for a simple msi package. 
