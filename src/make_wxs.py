@@ -74,7 +74,6 @@ def main():
     ok_button = tk.Button(master=project_name_win, text="Ok", command=confirm_name)
     ok_button.pack(side=tk.BOTTOM)
     ok_button.focus()
-
     project_name_win.mainloop()
     
     last_locs_root.find("ProjectName").text = project_name_entry.get()
