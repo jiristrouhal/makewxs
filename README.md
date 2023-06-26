@@ -8,7 +8,7 @@ It enables partial automation of creating .wxs source files containing the insta
 MakeWxs is designed primarily to be used with **Wix v4**.
 
 
-**IMPORTANT**: This project **is not** related to the WiX Toolset development in any way and does not use it. 
+**IMPORTANT**: This project **is not** related to the WiX Toolset development in any way and does not use any of its components.
 
 &nbsp;
 # How to get and install MakeWxs
@@ -23,7 +23,7 @@ You can download MakeWxs installer from [here](https://jiristrouhal.wordpress.co
 
 MakeWxs will now help you to create directory and component structure for a simple msi package. 
 
-As indicated in the [About](#about-makewxs) section, we will use Wix v4 together with MSBuild (here version 17.6.3).
+As indicated in the [About](#about-makewxs) section, we will use Wix v4 together with *MSBuild* (here version 17.6.3).
 
 1) Download the zip archive with a simple directory hierarchy, that we want to bundle into msi. Extract the *root* directory into some location by your choice. 
 2) Run the **MakeWxs.exe** in the **MakeWxs installation folder**. 
@@ -65,3 +65,5 @@ As indicated in the [About](#about-makewxs) section, we will use Wix v4 together
         ├───emptymarkdown.md
         └───helloworld.py
     ```
+
+Remember that every time you change you update the **MWTutorial_components.wxs** and **MWTutorial_dirs.wxs** (by running the **MakeWxs.exe** again), the **MWTutorial.wxs** remains unchanged and you have to manually copy the group references from **MWTutorial_group_refs.xml** into **MWTutorial.wxs** under appropriate *F*eature* elements.
