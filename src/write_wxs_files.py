@@ -34,8 +34,9 @@ def write_dir_wxs(target_path:str,folders:str,project_name:str)->None:
         folder_wxs.write(folders)
 
 def write_base_wxs_if_missing(target_path:str,project_name:str)->None:
+    file_path = os.path.join(target_path,project_name+".wxs")
     try: 
-        et.parse(project_name+".wxs")
+        et.parse(file_path)
     except: 
         wxs_root = et.Element("Wix", attrib={"xmlns":WXS_SCHEMA_LINK})
         package = et.SubElement(wxs_root,"Package", attrib={"Name":project_name, "Manufacturer":"","Version":"M.m.p","UpgradeCode":""})
@@ -43,14 +44,15 @@ def write_base_wxs_if_missing(target_path:str,project_name:str)->None:
         main_feature = et.SubElement(package,"Feature",attrib={"Id":"Main"})
         et.SubElement(main_feature,"ComponentGroupRef")
         et.indent(wxs_root,space="\t")
-        et.ElementTree(wxs_root).write(os.path.join(target_path,project_name+".wxs"),encoding="UTF-8",xml_declaration=True)
+        et.ElementTree(wxs_root).write(file_path,encoding="UTF-8",xml_declaration=True)
 
 
 def write_wixproj_if_missing(target_path:str,project_name:str)->None:
+    file_path = os.path.join(target_path,project_name+".wixproj")
     try: 
-        et.parse(project_name+".wixproj")
+        et.parse(file_path)
     except: 
         wxs_root = et.Element("Project", attrib={"Sdk":SDK})
         et.indent(wxs_root,space="\t")
-        et.ElementTree(wxs_root).write(os.path.join(target_path,project_name+".wixproj"))
+        et.ElementTree(wxs_root).write(file_path)
 

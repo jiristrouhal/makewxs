@@ -23,6 +23,7 @@ def get_wxs_files(source_path:str, target_path:str, project_name:str)->None:
 
     dirs = __new_folder(project_name,"INSTALLFOLDER", dirs, 2)
 
+    print(target_path)
     write_component_wxs(target_path,components,project_name)
     write_component_groups_ref_xml(target_path,group_refs,project_name)
     write_dir_wxs(target_path,dirs,project_name)
