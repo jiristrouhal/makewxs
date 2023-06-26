@@ -1,3 +1,10 @@
+#   Created by Jiří Strouhal (2023).
+#   Written in Python 3.10.10
+#   Licensed under the MIT License. See the LICENSE in the project root folder. 
+#   Public repository: https://github.com/jiristrouhal/makewxs.
+#   Use MznStrouhal@gmail.com to reach the author.
+
+
 import os
 import xml.etree.ElementTree as et
 
@@ -14,7 +21,7 @@ STANDARD_DIRECTORY_CLOSING = "\t</StandardDirectory>"
 
 
 def write_component_groups_ref_xml(target_path:str,refs:str,project_name:str)->None:
-    with open(target_path+"/"+project_name+"_group_refs.$xml",'w') as group_refs_xml: group_refs_xml.write(refs)
+    with open(target_path+"/"+project_name+"_group_refs.xml",'w') as group_refs_xml: group_refs_xml.write(refs)
 
 def write_component_wxs(target_path:str,components:str,project_name:str)->None:
     components = WXS_OPENER + '\n\n' + "<Fragment>" + components + "</Fragment>" + '\n' + WXS_CLOSING
