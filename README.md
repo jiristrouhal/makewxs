@@ -8,5 +8,5 @@ It enables partial automation of creating .wxs source files containing the insta
 
 **IMPORTANT**: This project **is not** related to the WiX Toolset development in any way and does not use it. 
 
-You can download MakeWxs msi installer for Windows on the author's [webpage](jstrouhal.wordpress.com). 
+You can download MakeWxs msi installer for Windows on the author's [webpage](https://jiristrouhal.wordpress.com/makewxs/download-makewxs). 
 After installation, you can run the MakeWxs.exe in the installation folder.
