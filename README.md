@@ -57,7 +57,7 @@ As indicated in the [About](#about-makewxs) section, we will use Wix v4 together
         ...
     ```
 8) Build the project. Find and run the installer **MWTutorial.msi**.  
-9) MWTutorial directory should appear in the Program Files (x86) with the following structure. Note that empty folder was excluded.
+9) *MWTutorial* directory should appear in the *Program Files (x86)* with the following structure. Note that empty folder was excluded.
     ```cmd
     MWTutorial
     ├───textfile.txt
@@ -66,4 +66,4 @@ As indicated in the [About](#about-makewxs) section, we will use Wix v4 together
         └───helloworld.py
     ```
 
-Remember that every time you change you update the **MWTutorial_components.wxs** and **MWTutorial_dirs.wxs** (by running the **MakeWxs.exe** again), the **MWTutorial.wxs** remains unchanged and you have to manually copy the group references from **MWTutorial_group_refs.xml** into **MWTutorial.wxs** under appropriate *F*eature* elements.
+Remember that every time you change you update the **MWTutorial_components.wxs** and **MWTutorial_dirs.wxs** (by running the **MakeWxs.exe** again), the **MWTutorial.wxs** remains unchanged and you have to manually copy the group references from **MWTutorial_group_refs.xml** into **MWTutorial.wxs** under appropriate Feature elements.
