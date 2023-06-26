@@ -74,8 +74,6 @@ def main():
     ok_button = tk.Button(master=project_name_win, text="Ok", command=confirm_name)
     ok_button.pack(side=tk.BOTTOM)
     ok_button.focus()
-    def button_action(event:tk.Event=None): ok_button.invoke()
-    ok_button.bind('<Enter>', button_action)
 
     project_name_win.mainloop()
     
