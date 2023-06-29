@@ -75,7 +75,7 @@ def __collect_components(source_path:str,root_dir_path:str)->str:
 def __new_group(group_id:str,directory:str,components:str)->str:
     opening = f'\t<ComponentGroup Id=\"{group_id}\" Directory=\"{directory}\">'
     closing = '\t</ComponentGroup>\n'
-    if components.strip()=="": return ""
+    if components.strip()=="": return opening + closing
     return opening + components + '\n' + closing
 
 def __new_group_ref(id:str)->str:
