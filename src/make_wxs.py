@@ -23,15 +23,9 @@ DEFAULT_PROJECT_NAME = "untitled_app"
 APP_NAME = "MakeWxs"
 AUTHOR_NAME = "MakeWxs"
 LOCAL_DATA_FOLDER = appdirs.user_data_dir(APP_NAME, AUTHOR_NAME)
-LAST_USED_LOCS_XML_NAME = "last_used_locs.xml.xml"
+LAST_USED_LOCS_XML_NAME = "last_used_locs.xml"
 LAST_USED_LOCS_XML_PATH = os.path.join(LOCAL_DATA_FOLDER, LAST_USED_LOCS_XML_NAME)
 
-
-def write_config_xml(author:str, app_name:str)->bool: 
-    if not os.path.isdir(LOCAL_DATA_FOLDER): os.makedirs(LOCAL_DATA_FOLDER)
-    with open(LAST_USED_LOCS_XML_PATH,"w") as f:
-        f.write("<Root> </Root>")
-    return 
 
 def main():
 
@@ -43,9 +37,14 @@ def main():
     last_target = DEFAULT_TARGET
     last_project_name = DEFAULT_PROJECT_NAME
 
-    if not os.path.isfile(LAST_USED_LOCS_XML_PATH):
-        write_config_xml(AUTHOR_NAME,APP_NAME)
-    else:
+    try: 
+        last_locs = et.parse(LAST_USED_LOCS_XML_PATH)
+        last_locs_root = last_locs.find("LastUsedLocations")
+        last_source = last_locs_root.find("Source").text
+        last_target = last_locs_root.find("Target").text
+        last_project_name = last_locs_root.find("ProjectName").text
+    except:
+        if not os.path.isdir(LOCAL_DATA_FOLDER): os.makedirs(LOCAL_DATA_FOLDER)
         last_locs_root = et.Element("LastUsedLocations")
         last_source = DEFAULT_SOURCE
         last_target = DEFAULT_TARGET
