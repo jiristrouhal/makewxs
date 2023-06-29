@@ -11,14 +11,27 @@ from tkinter.messagebox import showerror
 import tkinter as tk
 import os
 import xml.etree.ElementTree as et
+import appdirs
 
 
 #set default source and target to the root location, independent of OS
 DEFAULT_SOURCE = os.path.abspath(os.sep)
 DEFAULT_TARGET = os.path.abspath(os.sep)
 DEFAULT_PROJECT_NAME = "untitled_app"
-LAST_LOC_FILE = "src/last_loc.xml"
 
+
+APP_NAME = "MakeWxs"
+AUTHOR_NAME = "MakeWxs"
+LOCAL_DATA_FOLDER = appdirs.user_data_dir(APP_NAME, AUTHOR_NAME)
+LAST_USED_LOCS_XML_NAME = "last_used_locs.xml.xml"
+LAST_USED_LOCS_XML_PATH = os.path.join(LOCAL_DATA_FOLDER, LAST_USED_LOCS_XML_NAME)
+
+
+def write_config_xml(author:str, app_name:str)->bool: 
+    if not os.path.isdir(LOCAL_DATA_FOLDER): os.makedirs(LOCAL_DATA_FOLDER)
+    with open(LAST_USED_LOCS_XML_PATH,"w") as f:
+        f.write("<Root> </Root>")
+    return 
 
 def main():
 
@@ -30,12 +43,9 @@ def main():
     last_target = DEFAULT_TARGET
     last_project_name = DEFAULT_PROJECT_NAME
 
-    try:
-        last_locs = et.parse(LAST_LOC_FILE)
-        last_source = last_locs.find("Source").text
-        last_target = last_locs.find("Target").text
-        last_project_name = last_locs.find("ProjectName").text
-    except:
+    if not os.path.isfile(LAST_USED_LOCS_XML_PATH):
+        write_config_xml(AUTHOR_NAME,APP_NAME)
+    else:
         last_locs_root = et.Element("LastUsedLocations")
         last_source = DEFAULT_SOURCE
         last_target = DEFAULT_TARGET
@@ -44,8 +54,7 @@ def main():
         et.SubElement(last_locs_root,"Target").text=DEFAULT_TARGET
         et.SubElement(last_locs_root,"ProjectName").text=DEFAULT_PROJECT_NAME
         et.indent(last_locs_root,"\t")
-        et.ElementTree(last_locs_root).write(LAST_LOC_FILE,encoding="UTF-8",xml_declaration=True)
-
+        et.ElementTree(last_locs_root).write(LAST_USED_LOCS_XML_PATH,encoding="UTF-8",xml_declaration=True)
 
     target = askdirectory(title="Select target directory", initialdir=last_target)
     if target=="":
@@ -58,10 +67,10 @@ def main():
         return
     
 
-    last_locs_root = et.parse(LAST_LOC_FILE)
+    last_locs_root = et.parse(LAST_USED_LOCS_XML_PATH)
     last_locs_root.find("Source").text = source
     last_locs_root.find("Target").text = target
-    last_locs_root.write(LAST_LOC_FILE) 
+    last_locs_root.write(LAST_USED_LOCS_XML_PATH) 
 
 
     project_name_entry = tk.Entry(master=project_name_win,width=60)
@@ -77,7 +86,7 @@ def main():
     project_name_win.mainloop()
     
     last_locs_root.find("ProjectName").text = project_name_entry.get()
-    last_locs_root.write(LAST_LOC_FILE)
+    last_locs_root.write(LAST_USED_LOCS_XML_PATH)
 
     mwt.get_wxs_files(source, target, project_name_entry.get())
 
